@@ -9,7 +9,7 @@ sudo apt-get update
 # Instalação do Apache
  sudo apt-get install apache2
 
-#  teste de erro do apache
+# Teste de Erro do Apache
  sudo apache2ctl configtest
 
 # Correção Erro e adicionar ServerName ip_do_server
@@ -30,20 +30,20 @@ sudo apt-get update
 # sair
  exit;
 
-# Instalação php
+# Instalação do PHP com Alguns Pacotes
  sudo apt-get install php7.0 libapache2-mod-php php-mysql php-intl php-curl php-mbstring
 
-# Dar Prioridade ao php no apache
+# Dar Prioridade ao PHP no Apache
  nano /etc/apache2/mods-enabled/dir.conf
 
-# Configurar vitual host para um domínio
+# Configurar Virtual Host para um Domínio
 # Acesse a Pasta
  cd /etc/apache2/sites-available/
 
 # depois copie o arquivo 000-default.conf
  cp 000-default.conf dominio.com.br.conf
 
-# Depois Edite o Arquivo
+# Configuração para Domínio Principal
 
 <VirtualHost *:80>
         ServerAdmin contato@dominio.com.br
@@ -65,6 +65,35 @@ sudo apt-get update
 
 # Depois Ative a configuração do arquivo dominio.com.br.conf
  sudo a2ensite dominio.com.br.conf
+ 
+ # depois copie o arquivo dominio.com.br.conf
+ cp dominio.com.br.conf subdominio.dominio.com.br.conf
+ 
+# Configuração para Subdomínio
+
+<VirtualHost *:80>
+        ServerAdmin contato@dominio.com.br
+        ServerName  subdominio.dominio.com.br
+        ServerAlias subdominio
+        DocumentRoot /var/www/subdominio.dominio.com.br/public_html/
+
+        <Directory /var/www/subdominio.dominio.com.br/public_html/ >
+            Options Indexes FollowSymLinks MultiViews
+            AllowOverride all
+            Order allow,deny
+            allow from all
+        </Directory>
+        
+        #Logfiles
+        #ErrorLog  /var/www/subdominio.dominio.com.br/logs/error.log
+        #CustomLog /var/www/subdominio.dominio.com.br/logs/access.log combined
+</VirtualHost>
+
+# Depois Ative a configuração do subdominio.dominio.com.br.conf
+ sudo a2ensite subdominio.dominio.com.br.conf
+ 
+ # Reinicie o Apache2 para Carregar as Novas Alterações
+sudo service apache2 restart
 
 # Configuração do php.ini 
 # Caminho /etc/php/7.0/apache/php.ini
@@ -75,7 +104,7 @@ upload_max_filesize = 20M
 max_execution_time = 360
 date.timezone = America/Sao_Paulo
 
-# ativar modo rewrite
+# Ativar Modo rewrite do Apache
  sudo a2enmod rewrite
 
 # adicionar certificado ssl
@@ -88,8 +117,8 @@ date.timezone = America/Sao_Paulo
  sudo apt-get update
  sudo apt-get install certbot python-certbot-apache 
 
-# criar certificado para o domínio
+# Criar Certificado para o Domínio e Subdomínio
  certbot --apache -d dominio.com.br -d www.dominio.com.br
 
-# adicionar cron de renovação automática
+# Adicionar Cron de Renovação Automática, o Certificado Expira a Cada 3 meses
  certbot renew --dry-run
