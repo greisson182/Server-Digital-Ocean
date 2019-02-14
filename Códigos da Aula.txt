@@ -45,7 +45,7 @@ sudo apt-get update
 
 # Configuração para Domínio Principal
 
-#<VirtualHost *:80>
+<VirtualHost *:80>
         ServerAdmin contato@dominio.com.br
         ServerName  dominio.com.br
         ServerAlias www.dominio.com.br
@@ -61,7 +61,7 @@ sudo apt-get update
         #Logfiles
         #ErrorLog  /var/www/dominio.com.br/logs/error.log
         #CustomLog /var/www/dominio.com.br/logs/access.log combined
-#</VirtualHost>
+</VirtualHost>
 
 # Depois Ative a configuração do arquivo dominio.com.br.conf
  sudo a2ensite dominio.com.br.conf
@@ -71,7 +71,7 @@ sudo apt-get update
  
 # Configuração para Subdomínio
 
-#<VirtualHost *:80>
+<VirtualHost *:80>
         ServerAdmin contato@dominio.com.br
         ServerName  subdominio.dominio.com.br
         ServerAlias subdominio
@@ -87,7 +87,7 @@ sudo apt-get update
         #Logfiles
         #ErrorLog  /var/www/subdominio.dominio.com.br/logs/error.log
         #CustomLog /var/www/subdominio.dominio.com.br/logs/access.log combined
-#</VirtualHost>
+</VirtualHost>
 
 # Depois Ative a configuração do subdominio.dominio.com.br.conf
  sudo a2ensite subdominio.dominio.com.br.conf
