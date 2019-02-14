@@ -12,7 +12,7 @@ sudo apt-get update
 # Teste de Erro do Apache
  sudo apache2ctl configtest
 
-# Correção Erro e adicionar ServerName ip_do_server
+# Correção Erro e Adicionar ServerName ip_do_seu_server
  sudo nano /etc/apache2/apache2.conf
 
 # Instalação do Mysql Server
@@ -27,7 +27,7 @@ sudo apt-get update
 # Mostrar tabelas
  show databases;
 
-# sair
+# Sair do Mysql
  exit;
 
 # Instalação do PHP com Alguns Pacotes
@@ -66,7 +66,7 @@ sudo apt-get update
 # Depois Ative a configuração do arquivo dominio.com.br.conf
  sudo a2ensite dominio.com.br.conf
  
- # depois copie o arquivo dominio.com.br.conf
+ # Depois Copie o Arquivo dominio.com.br.conf para Gerar o Subdomínio
  cp dominio.com.br.conf subdominio.dominio.com.br.conf
  
 # Configuração para Subdomínio
@@ -92,7 +92,7 @@ sudo apt-get update
 # Depois Ative a configuração do subdominio.dominio.com.br.conf
  sudo a2ensite subdominio.dominio.com.br.conf
  
- # Reinicie o Apache2 para Carregar as Novas Alterações
+# Reinicie o Apache2 para Carregar as Novas Alterações
 sudo service apache2 restart
 
 # Configuração do php.ini 
@@ -107,7 +107,7 @@ date.timezone = America/Sao_Paulo
 # Ativar Modo rewrite do Apache
  sudo a2enmod rewrite
 
-# adicionar certificado ssl
+# Adicionar Certificado SSL
 # https://certbot.eff.org/lets-encrypt/ubuntutrusty-apache.html
 
  sudo apt-get update
