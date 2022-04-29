@@ -109,14 +109,8 @@ date.timezone = America/Sao_Paulo
  sudo a2enmod rewrite
 
 # Adicionar Certificado SSL
-# https://certbot.eff.org/lets-encrypt/ubuntutrusty-apache.html
-
- sudo apt-get update
- sudo apt-get install software-properties-common
- sudo add-apt-repository universe
- sudo add-apt-repository ppa:certbot/certbot
- sudo apt-get update
- sudo apt-get install certbot python-certbot-apache 
+sudo apt-get update
+sudo apt install certbot python3-certbot-apache
 
 # Criar Certificado para o Domínio e Subdomínio
  certbot --apache -d dominio.com.br -d www.dominio.com.br
