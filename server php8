@@ -53,7 +53,7 @@ sudo apt install php8.1 libapache2-mod-php8.1 php-mysql php-intl php-curl php-mb
         DocumentRoot /var/www/dominio.com.br/public_html/
 
         <Directory /var/www/dominio.com.br/public_html/ >
-            Options Indexes FollowSymLinks MultiViews
+            Options FollowSymLinks MultiViews
             AllowOverride all
             Order allow,deny
             allow from all
@@ -79,7 +79,7 @@ sudo apt install php8.1 libapache2-mod-php8.1 php-mysql php-intl php-curl php-mb
         DocumentRoot /var/www/subdominio.dominio.com.br/public_html/
 
         <Directory /var/www/subdominio.dominio.com.br/public_html/ >
-            Options Indexes FollowSymLinks MultiViews
+            Options FollowSymLinks MultiViews
             AllowOverride all
             Order allow,deny
             allow from all
@@ -95,6 +95,17 @@ sudo apt install php8.1 libapache2-mod-php8.1 php-mysql php-intl php-curl php-mb
  
 # Reinicie o Apache2 para Carregar as Novas Alterações
 sudo service apache2 restart
+
+#Melhorar Segurança Apache
+#retirar o texto "Indexes" para não mostrar a pasta http://domain.com/manual/images
+nano /etc/apache2/conf-available/apache2-doc.conf 
+
+#Acessar /etc/apache2/conf-available em ServerSignature deixe Off para não mostrar as informações de versão e porta do apache.
+nano security.conf
+
+#Acessar /etc/apache2 em <Directory /var/www/> retirar o texto "Indexes" para não mostrar as pastas sem index
+nano apache2.conf 
+
 
 # Configuração do php.ini 
 # Caminho /etc/php/7.0/apache/php.ini
