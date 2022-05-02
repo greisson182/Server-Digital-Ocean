@@ -128,3 +128,5 @@ sudo apt install certbot python3-certbot-apache
 
 # Adicionar Cron de Renovação Automática, o Certificado Expira a Cada 3 meses
  certbot renew --dry-run
+ 
+ # Caso necessário para ativar e desativar o site no apache a2ensite, a2dissite - enable or disable
