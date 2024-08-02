@@ -8,7 +8,7 @@ sudo apt install software-properties-common && sudo add-apt-repository ppa:ondre
 sudo apt update && sudo apt upgrade -y
 
 # Instala php8.1
-sudo apt install php8.1 libapache2-mod-php8.1 php-mysql php-intl php-curl php-mbstring
+sudo apt install php8.1 libapache2-mod-php8.1 php8.1-mysql php8.1-intl php8.1-curl php8.1-mbstring php8.1-php-zip php8.1-xml
 
 # Instalação do Apache
  sudo apt-get install apache2
