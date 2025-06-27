@@ -136,3 +136,14 @@ sudo apt install certbot python3-certbot-apache
  certbot renew --dry-run
  
  # Caso necessário para ativar e desativar o site no apache a2ensite, a2dissite - enable or disable
+
+# Segurança Importante: Adicionar Permissão para pastas uploads, tmp, cache com permissão para o apache e permição 770
+sudo chown -R www-data:www-data tmp/
+sudo chmod -R 770 tmp/
+
+sudo chown -R www-data:www-data uploads/
+sudo chmod -R 770 uploads/
+
+sudo chown -R www-data:www-data logs/
+sudo chmod -R 770 logs/
+
